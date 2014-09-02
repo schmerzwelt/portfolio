@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!-- Play nice with responsiveness -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Schmerzwelt</title>
+<link href="css/reset.css" rel="stylesheet" type="text/css" />
+<link href="css/stylesheet.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<div id="wall">
+    <header>
+        <h1 id="logo"><a href="index.html"><img src="img/logo.png"></a></h1>
+    </header>
+
+    <ul id="nav">
+        <li>
+            <a href="#show-menu">projects</a>
+            <ul class="hide" id="subnav">
+                <li><a href="projects/preuvenemint14.html">preuvenemint '14</a></li>
+                <li><a href="projects/thewish.html">the wish</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#show-menu">experiment</a>
+            <ul class="hide" id="subnav">
+                <li><a href="../experiment/wordplay.html">wordplay</a></li>
+            </ul>
+        </li>
+        <li><a href="http://schmerzwelt.tumblr.com/" target="_blank">inspiration</a></li>
+        <li><a href="contact.html">contact</a></li>
+    </ul>
+</div>
+
+<section id="horizontal">
+
+</section>
+
+<!-- jQuery Google CDN with local fallback -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+if (!window.jQuery) {
+    document.write('<script src="js/jquery-1.11.1.min.js"><'+'/script>');
+}
+</script>
+<!-- Load Custom Js -->
+<script src="js/javascript.js"></script>
+
+</body>
+</html>

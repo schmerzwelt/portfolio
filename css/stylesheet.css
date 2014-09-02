@@ -1,0 +1,315 @@
+@charset "UTF-8";
+/* CSS Document */
+
+@import url(http://fonts.googleapis.com/css?family=Karla:400,400italic,700,700italic);
+
+/* Play nice with responsiveness */
+@viewport {
+  width: device-width;
+}
+@-ms-viewport {
+  width: device-width;
+}
+
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+html,
+body {
+	width:100%;
+	height:100%;
+}
+
+body {
+	font-family: Karla;
+	text-rendering: optimizeLegibility;
+	
+	/* Make sure fonts render more consistently on Mac */
+	-webkit-font-smoothing: antialiased;
+}
+
+.hide {
+	display: none;
+}
+
+a {
+	text-decoration:none;
+	color:black;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+    margin: 0 auto;
+}
+
+#logo {
+	text-align:center;
+	margin:20px auto;
+	opacity: 0;
+	
+	-webkit-transition: opacity .7s ease-in;
+	   -moz-transition: opacity .7s ease-in;
+        -ms-transition: opacity .7s ease-in;
+         -o-transition: opacity .7s ease-in;
+            transition: opacity .7s ease-in;
+}
+
+#logo.loaded {
+	opacity: 1;
+}
+
+#logo a {
+	display: block;
+	width: 50px;
+	height: 50px;
+	margin: 0 auto;
+}
+
+#nav {
+	text-align: center;
+}
+
+#subnav {
+	font-size:14px;
+	margin-top:5px;
+	margin-bottom:15px;
+}
+
+#nav a {
+	display: block;
+	line-height: 1.5em;
+}
+
+#subnav > a {
+	color:#000;
+	text-decoration:none;
+}
+
+.content {
+	margin: 0 auto;
+	padding: 20px;
+	max-width: 500px;
+}
+
+.content > img {
+	display: block;
+}
+
+.content:last-child {
+	margin-bottom: 50px;
+}
+
+.text {
+	white-space: normal;
+	font-size:14px;
+	line-height: 1.5em;
+	color:#000;
+}
+
+.text h1 {
+	font-size: 1.5em;
+	font-weight: 700;
+	padding: .75em 0 .5em 0;
+}
+
+.text a {
+	text-decoration: underline;
+}
+
+.text p {
+	padding-bottom: 1em;
+}
+
+/*
+Only mobile displays and very small tablets
+*/
+@media screen and (max-width: 800px) {
+    /* Image Show off (for when user has big window but resizes to a smaller viewport) */
+    /* !important is there to overwrite inline css applied by Javascript */
+    .showoff-container {
+        display: none !important;
+    }
+}
+
+/*
+Larger mobile displays and small laptops (tables portrait, landscape, and netbooks etc.)
+*/
+@media screen and (min-width: 801px) and (min-height: 400px) {
+    img {
+        margin: 0;
+    }
+    
+	#wall {
+		background-color:#fff;
+		width:220px;
+		height:100%;
+		margin-left:30px;
+		position:fixed;	
+		z-index: 100;
+        
+        /* Fix black lines appearing on fixed positioned elements with a background color on mobile safari */
+        border-radius: 1px;
+	}
+	
+	#logo a {	
+		margin-top:50px;
+	}
+	
+	#nav {
+		margin-top:50px;
+	}
+	
+	#horizontal {
+		position: absolute;
+		top: 50%;
+        left: 0;
+		margin-top: -175px;
+        overflow: hidden;
+		white-space: nowrap;
+		height: 350px;
+		font-size: 0;
+		z-index: 10;
+	}
+	
+	/* Offset for navigation */
+	#horizontal > .content:first-child {
+		margin-left: 260px;
+	}
+	
+    /* Override the mobile margin-bottom of 50px and add to the right, 
+    inherit so it takes the margin left 260 if there is only one .content present */
+	#horizontal > .content:last-child {
+		margin-bottom: 0;
+        margin-right: 50px;
+	}
+
+    .content:last-child:after {
+        content: ' ';
+    }
+    
+	.content {
+		height: 350px;
+		display:inline-block;
+		margin: 0 20px 0 0;
+		padding: 0;
+		max-width: none;
+	}
+	
+	.content > img {
+		height: 350px;
+		width: auto;
+        max-width: none;
+	}
+    
+	.content-text {
+        position: relative;
+        width: 400px;
+	}
+	
+	.text {
+		width: 400px;
+		height: 350px;
+        padding-bottom: 20px;
+		overflow-y: auto;
+		overflow-x: hidden;
+        
+		/* Absolute positioned for weird mobile safari bug */
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+    
+    img[data-showoff] {
+        cursor: pointer;
+        cursor: -webkit-zoom-in;
+        cursor: -moz-zoom-in;
+    }
+    
+    /* Image Show off */
+    .showoff-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 30px;
+        background-color: rgba(255,255,255,.9);
+        
+        cursor: pointer;
+        cursor: -webkit-zoom-out;
+        cursor: -moz-zoom-out;
+        
+        /* Make sure showoff-container and contents are on top of the dom stack */
+        z-index: 200;
+        /* Horizontally center the image */
+        text-align: center;
+        /* Enables vertically centered image through inline-block and center-img-span element usage */
+        height: 100%;
+    }
+    
+    .showoff-container > .showoff-img-wrapper,
+    .showoff-container img {
+        max-width: 100%;
+        max-height: 100%;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    
+    .showoff-container:before,
+    .showoff-img-center-span {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+    }
+	
+	/*
+	Regular laptop/desktop screens
+	*/
+	@media (min-height: 600px) {
+		#horizontal {
+			margin-top: -250px;
+			height: 500px;
+		}
+		
+		.content {
+			height: 500px;
+		}
+		
+		.content > img {
+			height: 500px;
+		}
+		
+		.text {
+			height: 500px;
+		}
+	}
+	
+	/*
+	Large laptop/desktop screens
+	*/
+	@media (min-height: 900px) {
+		#horizontal {
+			margin-top: -350px;
+			height: 700px;
+		}
+		
+		.content {
+			height: 700px;
+		}
+		
+		.content > img {
+			height: 700px;
+		}
+		
+		.text {
+			height: 700px;
+		}
+	}
+}
