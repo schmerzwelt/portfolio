@@ -74,7 +74,6 @@ function init() {
 	processImages();
 	activateSlider();
     
-    
     if ($body.width() >= 800) {
         $body.on('click', '[data-showoff]', function (e) {
             var noRetina = $(this).hasClass('noRetina');
